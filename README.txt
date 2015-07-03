@@ -1,6 +1,6 @@
 === Swifty Bar ===
 Contributors: goran87
-Tags: share buttons,
+Tags: share buttons,sticky bar, footer bar, previous next posts, time to read, progress bar,progressbar,sticky footer, footer bar
 Requires at least: 3.0
 Tested up to: 4.2.2
 Stable tag: 1.0
