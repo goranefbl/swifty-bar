@@ -1,0 +1,310 @@
+@font-face {
+  font-family: 'fontello';
+  src: url('../fonts/fontello.eot?75050836');
+  src: url('../fonts/fontello.eot?75050836#iefix') format('embedded-opentype'),
+       url('../fonts/fontello.woff?75050836') format('woff'),
+       url('../fonts/fontello.ttf?75050836') format('truetype'),
+       url('../fonts/fontello.svg?75050836#fontello') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+ 
+.icon-facebook:before { content: '\e804'; } 
+.icon-gplus:before { content: '\e805'; }
+.icon-pinterest:before { content: '\e806'; }
+.icon-linkedin:before { content: '\e807'; }
+.icon-twitter:before { content: '\e808'; }
+.icon-comment:before { content: '\e809'; }
+.icon-comment-alt:before { content: '\e80a'; }
+.icon-comment-1:before { content: '\e80b'; }
+.icon-left-open-1:before { content: '\e80c'; }
+.icon-right-open-1:before { content: '\e80d'; }
+
+body.single {
+  margin-bottom: 46px!important;
+}
+
+#sb_super_bar {
+  height: 46px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99999;
+  background: #fff;
+  border-top: 1px solid #ddd;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+}
+#sb_super_bar #sb_main_bar {
+  background-color: #fff;
+  height: 46px;
+  border-bottom: 1px solid #ddd;
+}
+
+.progress-container {
+  width: 100%;
+  background-color: transparent;
+  position: absolute;
+  top: -3px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  display: block;
+}
+.progress-bar {
+  background-color: #3498db;
+  width: 0%;
+  display: block;
+  height: inherit;
+}
+
+/* Category and Title */
+
+.sb_text-size {
+  background: #555;
+  float: left;
+  line-height: 46px;
+  text-align: center;
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+}
+.sb_text-size:hover {
+  background: #666;
+}
+.sb_text-size a,.sb_text-size span{
+  font: 15px/46px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: bold;
+  display: block;
+  color: #fff;
+  padding: 0 15px;
+  margin: 0;
+  background-color: #0074a1;
+  transition: all 0.2s;
+  letter-spacing: 1px;
+  -webkit-transition: all 0.2s;
+}
+.sb_text-size a:visited {
+  color: #fff;
+}
+.sb_text-size a:hover {
+  background-color: #3498db;
+  text-decoration: none;
+  color: #fff;
+}
+.sb_post-data {
+  font: 15px/46px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin-left: 20px;
+  float: left;
+}
+.sb_post-data h2 {
+  font: 17px/46px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  float: left;
+}
+.sb_post-data .sb_author {
+  margin-left: 10px;
+}
+.sb_post-data .sb_author:before {
+  content: "-";
+  margin-right: 7px;
+}
+.sb_ttr {
+  margin-left: -3px;
+}
+.sb_ttr:before {
+  content: '\00B7';
+  margin: 0 10px;
+  font-size: 28px;
+  vertical-align: bottom;
+}
+
+/* Prev/Next Posts */
+
+.sb_prev-next-posts {
+  float: right;
+}
+.sb_prev-next-posts > a {
+  width: 46px;
+  height: 46px;
+  line-height: 46px;
+  display: block;
+  float: right;
+  color: #3498db;
+  text-align:center;
+  border-left: 1px solid #ddd;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+.sb_prev-next-posts > a:hover {
+  background-color: #f3f3f3;
+}
+.sb_prev-next-posts .sb_next_post {
+    position: absolute;
+    top: 46px;
+    right: 0;
+    height: 155px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 0;
+    transition: all 0.6s;
+    -webkit-transition: all 0.6s;
+    text-align: center;
+    z-index: -1;
+}
+.sb_prev-next-posts .sb_next_post > div {
+  float: left;
+  height: 155px;
+}
+.sb_prev-next-posts img {
+    display: block;
+    max-height: 153px;
+}
+.sb_prev-next-posts .sb_next_post_info {
+    display: table;
+    height: 155px;
+    width: 205px;
+    padding: 0px;
+}
+.sb_prev-next-posts .sb_next_post_info span.sb_title {
+    font: 17px/22px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #000;
+    display: table-cell;
+    vertical-align: middle;
+    padding: 25px;
+}
+.sb_prev-next-posts .sb_next_post_info span.sb_category {
+    font: 10px/16px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: #0074a1;
+    padding: 3px 10px;
+    color: #fff;
+    text-transform: uppercase;
+    display: inline-block;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.sb_prev-next-posts .sb_next_post_info span.sb_tcategory {
+  display: block;
+}
+
+/* Comments */
+
+.sb_actions {
+  float: right;
+  margin-right: 10px;
+}
+.sb_actions a,.sb_actions a:visited{
+  font-size: 19px;
+  line-height: 46px;
+  color: #aaa;
+  padding: 0 10px;
+  margin: 0;
+  display: inline-block;
+}
+.sb_actions a:hover{
+  color: #666;
+  text-decoration: none;
+}
+.sb_actions > .sb_comment {
+  font-size: 18px;
+}
+.sb_actions > .sb_comment i {
+  margin-left: 5px;
+  font-size: 19px;
+}
+
+/* Share */
+
+#sb_super_bar .sb_share {
+  float: right;
+  margin: 0;
+  padding: 6px 20px;
+  border-left: 1px solid #ddd;
+}
+.sb_share li {
+  float: left;
+  margin: 0 2px;
+  list-style: none;
+}
+.sb_share li a{
+  font: 15px/34px "Arial", sans-serif;
+  display: block;
+  height: 34px;
+  width: 34px;
+  border-radius: 2px;
+  text-align: center;
+  color: #fff;
+  padding: 0;
+  margin: 0;
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+}
+.sb_share li a:hover {
+  opacity: 0.8;
+}
+.sb_share li a span {
+  display: none;
+}
+.sb_share li.facebook a{
+  width: auto;
+  padding: 0 10px;
+}
+.sb_share li.facebook a span {
+  display: inline-block;
+  padding-left: 10px;
+}
+.sb_share li a.soc-tw{
+  background-color: #00c3f3;
+}
+.sb_share li a.soc-fb{
+  background-color: #2d609b;
+}
+.sb_share li a.soc-gplus{
+  background-color: #eb4026;
+}
+.sb_share li a.soc-linked{
+  background-color: #0074a1;
+}
+.sb_share li a.soc-pint{
+  background-color: #ca212a;
+}
+
+
+@media (max-width: 667px) {
+
+  .sb_post-data,.sb_text-size {
+    display: none;
+  }
+  .sb_share li.facebook a {
+    width: 34px;
+    padding: 0;
+  }
+  .sb_actions {
+    float: right;
+    margin-right: 5px;
+  }
+  #sb_super_bar .sb_share {
+    padding: 6px 10px;
+  }
+
+}
+
