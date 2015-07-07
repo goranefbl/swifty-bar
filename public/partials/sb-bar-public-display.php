@@ -43,6 +43,13 @@
 		$ttr_text = "time to read:";
 	}
 
+	// Word by
+	if(isset($options["by-text"]) && $options["by-text"] != '') {
+		$by_text = $options["by-text"];
+	} else {
+		$by_text = "by";
+	}
+
 	//New posts or from category
 	if(isset($options["prev_next_posts"]) && $options["prev_next_posts"] == 'same') {
 		$adjacent = true;
@@ -57,13 +64,13 @@
 	<div id="sb_super_bar">
 
 		<?php if(!isset($options["disable-ttr"])) { ?>
-			<div class="progress-container"><span class="progress-bar"></span></div>
+			<div class="sbprogress-container"><span class="sbprogress-bar"></span></div>
 		<?php } ?>
 
 		<div id="sb_main_bar">
 
 			<div class="sb_text-size">
-				<?php if($post_type->label == "Posts") { ?>
+				<?php if(is_singular( 'post' )) { ?>
 					<a href="<?php echo get_category_link($category[0]->cat_ID); ?>"><?php echo $category[0]->cat_name; ?></a>
 				<?php } else { ?>
 					<span><?php echo $post_type->label; ?></span>
@@ -74,7 +81,7 @@
 				<h2><?php the_title(); ?></h2>
 				<?php if(!isset($options["disable-author"])) { ?>
 				<?php if($first_name != '' || $last_name != '') { ?>
-					<span class="sb_author"> by <?php echo $first_name . ' ' . $last_name; ?></span>
+					<span class="sb_author"><?php echo $by_text; ?> <?php echo $first_name . ' ' . $last_name; ?></span>
 				<?php } ?>
 				<?php } ?>
 				<?php if(!isset($options["disable-ttr"])) { ?>
@@ -94,7 +101,9 @@
 						<div class="sb_next_post_info">
 							<span class="sb_title">
 								<span class="sb_category">
-									<?php $category = get_the_category($next_post->ID); echo $category[0]->cat_name; ?>
+									<?php if(is_singular( 'post' )) {
+											$category = get_the_category($next_post->ID); echo $category[0]->cat_name; 
+										} ?>
 								</span>
 								<span class="sb_tcategory">
 									<?php 
@@ -120,7 +129,9 @@
 						<div class="sb_next_post_info">
 							<span class="sb_title">
 								<span class="sb_category">
-									<?php $category = get_the_category($prev_post->ID); echo $category[0]->cat_name; ?>
+									<?php if(is_singular( 'post' )) {
+											$category = get_the_category($prev_post->ID); echo $category[0]->cat_name; 
+										} ?>
 								</span>
 								<span class="sb_tcategory">
 									<?php 
@@ -139,11 +150,11 @@
 
 			<?php if(!isset($options["disable-share"])) { ?>
 			<ul class="sb_share">
-			    <li class="facebook"><a href="<?php the_permalink(); ?>" title="Share on Facebook" class="soc-fb" target="_blank"><i class="icon-facebook"></i><span>Share on Facebook</span></a></li>
-			    <li class="twitter"><a href="<?php the_permalink(); ?>" title="Share on Twitter" class="soc-tw" target="_blank" ><i class="icon-twitter"></i><span>Share on Twitter</span></a></li>
-			    <li class="google-plus"><a href="<?php the_permalink(); ?>" title="Share on Google Plus" class="soc-gplus" target="_blank"><i class="icon-gplus"></i><span>Share on Google Plus</span></a></li>
-			    <li class="linkedin"><a href="<?php the_permalink(); ?>" title="Share on Linkedin" class="soc-linked" target="_blank"><i class="icon-linkedin"></i><span>Share on LinkedIn</span></a></li>
-    			<li class="pinterest"><a href="<?php the_permalink(); ?>" title="Share on Pinterest" class="soc-pint" target="_blank"><i class="icon-pinterest"></i><span>Share on Pinterest</span></a></li>
+			    <li class="sbfacebook"><a href="#" title="Share on Facebook" class="sbsoc-fb" target="_blank"><i class="icon-facebook"></i><span>Share on Facebook</span></a></li>
+			    <li class="sbtwitter"><a href="#" data-title="<?php the_title(); ?>" title="Share on Twitter" class="sbsoc-tw" target="_blank" ><i class="icon-twitter"></i><span>Share on Twitter</span></a></li>
+			    <li class="sbgoogle-plus"><a href="#" title="Share on Google Plus" class="sbsoc-gplus" target="_blank"><i class="icon-gplus"></i><span>Share on Google Plus</span></a></li>
+			    <li class="sblinkedin"><a href="#" title="Share on Linkedin" class="sbsoc-linked" target="_blank"><i class="icon-linkedin"></i><span>Share on LinkedIn</span></a></li>
+    			<li class="sbpinterest"><a href="#" title="Share on Pinterest" class="sbsoc-pint" target="_blank"><i class="icon-pinterest"></i><span>Share on Pinterest</span></a></li>
 			</ul>
 			<?php } ?>
 

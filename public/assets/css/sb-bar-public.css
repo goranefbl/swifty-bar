@@ -1,5 +1,5 @@
 @font-face {
-  font-family: 'fontello';
+  font-family: 'sbfontello';
   src: url('../fonts/fontello.eot?75050836');
   src: url('../fonts/fontello.eot?75050836#iefix') format('embedded-opentype'),
        url('../fonts/fontello.woff?75050836') format('woff'),
@@ -10,7 +10,7 @@
 }
 
 [class^="icon-"]:before, [class*=" icon-"]:before {
-  font-family: "fontello";
+  font-family: "sbfontello";
   font-style: normal;
   font-weight: normal;
   speak: none;
@@ -56,7 +56,7 @@ body.single {
   border-bottom: 1px solid #ddd;
 }
 
-.progress-container {
+.sbprogress-container {
   width: 100%;
   background-color: transparent;
   position: absolute;
@@ -66,7 +66,7 @@ body.single {
   height: 3px;
   display: block;
 }
-.progress-bar {
+.sbprogress-bar {
   background-color: #3498db;
   width: 0%;
   display: block;
@@ -264,27 +264,27 @@ body.single {
 .sb_share li a span {
   display: none;
 }
-.sb_share li.facebook a{
+.sb_share li.sbfacebook a{
   width: auto;
   padding: 0 10px;
 }
-.sb_share li.facebook a span {
+.sb_share li.sbfacebook a span {
   display: inline-block;
   padding-left: 10px;
 }
-.sb_share li a.soc-tw{
+.sb_share li a.sbsoc-tw{
   background-color: #00c3f3;
 }
-.sb_share li a.soc-fb{
+.sb_share li a.sbsoc-fb{
   background-color: #2d609b;
 }
-.sb_share li a.soc-gplus{
+.sb_share li a.sbsoc-gplus{
   background-color: #eb4026;
 }
-.sb_share li a.soc-linked{
+.sb_share li a.sbsoc-linked{
   background-color: #0074a1;
 }
-.sb_share li a.soc-pint{
+.sb_share li a.sbsoc-pint{
   background-color: #ca212a;
 }
 
@@ -294,7 +294,7 @@ body.single {
   .sb_post-data,.sb_text-size {
     display: none;
   }
-  .sb_share li.facebook a {
+  .sb_share li.sbfacebook a {
     width: 34px;
     padding: 0;
   }
@@ -304,6 +304,22 @@ body.single {
   }
   #sb_super_bar .sb_share {
     padding: 6px 10px;
+  }
+  .sb_next_post_image {
+    display:none;
+  }
+
+
+}
+
+
+@media (max-width: 320px) {
+
+  .sb_prev-next-posts > a {
+    width: 32px;
+  }
+  .sb_actions a, .sb_actions a:visited {
+    padding:0;
   }
 
 }
