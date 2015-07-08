@@ -111,4 +111,52 @@ class sb_bar_Public {
 
 	}
 
+	/**
+	 * Change the brightness of the passed in color
+	 *
+	 * $diff should be negative to go darker, positive to go lighter and
+	 * is subtracted from the decimal (0-255) value of the color
+	 *
+	 * @param string $hex color to be modified
+	 * @param string $diff amount to change the color
+	 * @return string hex color
+	 */
+	public function hex_color_mod($hex, $diff) {
+		$rgb = str_split(trim($hex, '# '), 2);
+
+		foreach ($rgb as &$hex) {
+			$dec = hexdec($hex);
+			if ($diff >= 0) {
+				$dec += $diff;
+			}
+			else {
+				$dec -= abs($diff);
+			}
+			$dec = max(0, min(255, $dec));
+			$hex = str_pad(dechex($dec), 2, '0', STR_PAD_LEFT);
+		}
+
+		return '#'.implode($rgb);
+	} // hex_color_mod()
+	
+	/**
+     * Returns whether or not given color is considered "light"
+     * @param string|Boolean $color
+     * @return boolean
+     * @link https://github.com/mexitek/phpColors
+     */
+    public function is_color_light( $color = FALSE ) {
+
+        // Get our color
+        $color = ($color) ? $color : $this->_hex;
+
+        // Calculate straight from rbg
+        $r = hexdec($color[0].$color[1]);
+        $g = hexdec($color[2].$color[3]);
+        $b = hexdec($color[4].$color[5]);
+
+        return (( $r*299 + $g*587 + $b*114 )/1000 > 130);
+
+    } // is_color_light()
+
 }
