@@ -22,8 +22,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-.icon-facebook:before { content: '\e804'; }
+ 
+.icon-facebook:before { content: '\e804'; } 
 .icon-gplus:before { content: '\e805'; }
 .icon-pinterest:before { content: '\e806'; }
 .icon-linkedin:before { content: '\e807'; }
@@ -67,7 +67,7 @@ body.single {
   display: block;
 }
 .sbprogress-bar {
-  /* background-color set inline in public/partials/sb-bar-public-display.php */
+  background-color: #3498db;
   width: 0%;
   display: block;
   height: inherit;
@@ -91,21 +91,21 @@ body.single {
   text-transform: uppercase;
   font-weight: bold;
   display: block;
-  /* color set inline in public/partials/sb-bar-public-display.php */
+  color: #fff;
   padding: 0 15px;
   margin: 0;
-  /* background-color set inline in public/partials/sb-bar-public-display.php */
+  background-color: #0074a1;
   transition: all 0.2s;
   letter-spacing: 1px;
   -webkit-transition: all 0.2s;
 }
 .sb_text-size a:visited {
-  /* color set inline in public/partials/sb-bar-public-display.php */
+  color: #fff;
 }
 .sb_text-size a:hover {
-  /* background-color set inline in public/partials/sb-bar-public-display.php */
+  background-color: #3498db;
   text-decoration: none;
-  /* color set inline in public/partials/sb-bar-public-display.php */
+  color: #fff;
 }
 .sb_post-data {
   font: 15px/46px "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -147,7 +147,7 @@ body.single {
   line-height: 46px;
   display: block;
   float: right;
-  /* color set inline in public/partials/sb-bar-public-display.php */
+  color: #3498db;
   text-align:center;
   border-left: 1px solid #ddd;
   font-size: 16px;
@@ -193,9 +193,9 @@ body.single {
 }
 .sb_prev-next-posts .sb_next_post_info span.sb_category {
     font: 10px/16px "Helvetica Neue", Helvetica, Arial, sans-serif;
-    /* background-color set inline in public/partials/sb-bar-public-display.php */
+    background-color: #0074a1;
     padding: 3px 10px;
-    /* color set inline in public/partials/sb-bar-public-display.php */
+    color: #fff;
     text-transform: uppercase;
     display: inline-block;
     letter-spacing: 1px;

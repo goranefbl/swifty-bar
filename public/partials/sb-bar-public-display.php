@@ -13,46 +13,6 @@
 	$post_type = get_post_type_object( get_post_type($post_id) ); //Needed for custom post types
 	$posttype = array();
 
-	//Base Color
-	if(isset($options["base-color"]) && $options["base-color"] != '') {
-		$color = $options["base-color"];
-	} else {
-		$color = "#0074a1";
-	}
-	if ( sb_bar_Public::is_color_light( $color ) ) {
-		$text_color = 'black';
-		$modified_color = sb_bar_Public::hex_color_mod( $color, -33 );
-	} else {
-		$text_color = 'white';
-		$modified_color = sb_bar_Public::hex_color_mod( $color, 33 );
-	}
-	?>
-
-	<style type="text/css">
-		.sbprogress-bar {
-			background: <?php echo $modified_color; ?>;
-		}
-		.sb_prev-next-posts > a {
-			color: <?php echo $modified_color; ?>;
-		}
-		.sb_text-size a, .sb_text-size span {
-			background: <?php echo $color; ?>;
-			color: <?php echo $text_color; ?>;
-		}
-		.sb_text-size a:visited {
-			color: <?php echo $text_color; ?>;
-		}
-		.sb_text-size a:hover {
-			background: <?php echo $modified_color; ?>;
-			color: <?php echo $text_color; ?>;
-		}
-		.sb_prev-next-posts .sb_next_post_info span.sb_category {
-			background: <?php echo $color; ?>;
-			color: <?php echo $text_color; ?>;
-		}
-	</style>
-
-	<?php
 
 	//Post Type
 	if(isset($options["post-type"]) && $options["post-type"] != '') {

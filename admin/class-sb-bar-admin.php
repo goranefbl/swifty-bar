@@ -41,27 +41,6 @@ class sb_bar_Admin {
 	}
 
 	/**
-	 * Register the stylesheets for the admin area.
-	 *
-	 * @since    1.0.0
-	 */
-	public function enqueue_styles() {
-
-		wp_enqueue_style( 'wp-color-picker' );
-
-	}
-	/**
-	 * Register the JavaScript for the admin area.
-	 *
-	 * @since    1.0.0
-	 */
-	public function enqueue_scripts() {
-
-		wp_enqueue_script( $this->sb_bar, plugin_dir_url( __FILE__ ) . 'js/sb-bar-admin.js', array( 'wp-color-picker' ), $this->version, true );
-
-	}
-
-	/**
 	 * Register the Settings page.
 	 *
 	 * @since    1.0.0
@@ -170,13 +149,6 @@ class sb_bar_Admin {
 			$this->sb_bar,
 			$this->sb_bar . '-display-options'
 		);
-		add_settings_field(
-			'base-color',
-			apply_filters( $this->sb_bar . '-base-color', __( 'Base Color', $this->sb_bar ) ),
-			array( $this, 'base_color' ),
-			$this->sb_bar,
-			$this->sb_bar . '-display-options'
-		);
 
 		// add_settings_section( $id, $title, $callback, $menu_slug );
 		add_settings_section(
@@ -235,35 +207,10 @@ class sb_bar_Admin {
 
 				if($key == 'post-type') { // dont sanitize array
 					$new_input[ $key ] = $val;
-				} elseif ( 'base-color' == $key ) { // validate base color value
-					$color = trim( $val );
-					$color = strip_tags( stripslashes( $color ) );
-
-					// Check if value is a valid hex color
-					if( FALSE === $this->is_color( $color ) ) {
-
-						// Set the error message
-						add_settings_error( 'base-color', 'base-color-error', 'Insert a valid base color for the Swifty Bar.', 'error' );
-
-						$options = get_option( $this->sb_bar . '_options' );
-						$option = '';
-
-						if ( ! empty( $options['base-color'] ) ) {
-							$option = $options['base-color'];
-						}
-
-						// Get the previous valid value
-						$new_input['base-color'] = $option;
-
-					} else {
-
-						$new_input['base-color'] = $color;
-
-					}
 				} else {
 					$new_input[ $key ] = sanitize_text_field( $val );
 				}
-
+				
 			}
 
 		}
@@ -272,18 +219,6 @@ class sb_bar_Admin {
 
 
 	} // sanitize()
-
-	/**
-	* Function that will check if value is a valid HEX color.
-	*/
-	public function is_color( $value ) {
-
-		if ( preg_match( '/^#[a-f0-9]{6}$/i', $value ) ) { // if user insert a HEX color with #
-		    return true;
-		}
-
-		return false;
-	} // is_color()
 
 	/**
 	 * Creates a settings section
@@ -464,27 +399,6 @@ class sb_bar_Admin {
 
 	} // prev_next_posts()
 
-	/**
-	 * Base Color
-	 *
-	 * @since 		1.0.0
-	 * @return 		mixed 			The settings field
-	 */
-	public function base_color() {
-
-		$options  	= get_option( $this->sb_bar . '_options' );
-		$option 	= '#0074a1';
-
-		if ( ! empty( $options['base-color'] ) ) {
-			$option = $options['base-color'];
-		}
-
-		?>
-		<input type="text" id="<?php echo $this->sb_bar; ?>_options[base-color]" name="<?php echo $this->sb_bar; ?>_options[base-color]" value="<?php echo esc_attr( $option ); ?>"></input>
-		<p class="description">This is the base color from which the bar will be styled.</p>
-		<?php
-
-	} // base_color()
 
 	/**
 	 * Disable Author Box
