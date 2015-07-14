@@ -13,19 +13,10 @@
 	$post_type = get_post_type_object( get_post_type($post_id) ); //Needed for custom post types
 	$posttype = array();
 
+
 	//Post Type
 	if(isset($options["post-type"]) && $options["post-type"] != '') {
 		$posttype = $options["post-type"];
-	}
-
-	//Taxonomy
-	if(isset($options["taxonomy"][ $post_type->name ]) && $options["taxonomy"][ $post_type->name ] != '') {
-		$taxonomy = $options["taxonomy"][ $post_type->name ];
-	}
-	//Taxonomy Term
-	if(isset($taxonomy) && '' != $taxonomy) {
-		$taxonomy_terms = get_the_terms( $post_id, $taxonomy );
-		$taxonomy_term = $taxonomy_terms[0]->name;
 	}
 
 	//TTR
@@ -44,7 +35,7 @@
 	} else {
 		$commentsID = "comments";
 	}
-
+	
 	// Time to read text
 	if(isset($options["ttr-text"]) && $options["ttr-text"] != '') {
 		$ttr_text = $options["ttr-text"];
@@ -66,7 +57,7 @@
 		$adjacent = false;
 	}
 
-
+	
 	if(is_singular() && in_array(get_post_type( $post_id ), $posttype)) {
 	?>
 
@@ -79,8 +70,8 @@
 		<div id="sb_main_bar">
 
 			<div class="sb_text-size">
-				<?php if( ! empty( $taxonomy_term ) ) { ?>
-					<a href="<?php echo get_term_link( $taxonomy_term, $taxonomy ); ?>"><?php echo $taxonomy_term; ?></a>
+				<?php if(is_singular( 'post' )) { ?>
+					<a href="<?php echo get_category_link($category[0]->cat_ID); ?>"><?php echo $category[0]->cat_name; ?></a>
 				<?php } else { ?>
 					<span><?php echo $post_type->label; ?></span>
 				<?php } ?>
@@ -111,16 +102,16 @@
 							<span class="sb_title">
 								<span class="sb_category">
 									<?php if(is_singular( 'post' )) {
-											$category = get_the_category($next_post->ID); echo $category[0]->cat_name;
+											$category = get_the_category($next_post->ID); echo $category[0]->cat_name; 
 										} ?>
 								</span>
 								<span class="sb_tcategory">
-									<?php
-										$post_title = substr(get_the_title( $next_post->ID ),0,50);
-										echo $post_title;
-										if (strlen($post_title) >48){
-											echo '…';
-										}
+									<?php 
+										$post_title = substr(get_the_title( $next_post->ID ),0,50); 
+										echo $post_title; 
+										if (strlen($post_title) >48){ 
+											echo '…'; 
+										} 
 									?>
 								</span>
 							</span>
@@ -139,16 +130,16 @@
 							<span class="sb_title">
 								<span class="sb_category">
 									<?php if(is_singular( 'post' )) {
-											$category = get_the_category($prev_post->ID); echo $category[0]->cat_name;
+											$category = get_the_category($prev_post->ID); echo $category[0]->cat_name; 
 										} ?>
 								</span>
 								<span class="sb_tcategory">
-									<?php
-										$post_title = substr(get_the_title( $prev_post->ID ),0,50);
-										echo $post_title;
-										if (strlen($post_title) >48){
-											echo '…';
-										}
+									<?php 
+										$post_title = substr(get_the_title( $prev_post->ID ),0,50); 
+										echo $post_title; 
+										if (strlen($post_title) >48){ 
+											echo '…'; 
+										} 
 									?>
 								</span>
 							</span>
@@ -169,7 +160,7 @@
 
 			<?php if(!isset($options["disable-comments"])) { ?>
 			<div class="sb_actions">
-				<a class="sb_comment" href="#<?php echo $commentsID; ?>"><?php echo $comment_count; ?><i class="icon-comment"></i></a>
+				<a class="sb_comment" href="#<?php echo $commentsID; ?>"><?php echo $comment_count; ?><i class="icon-comment"></i></a>		
 			</div>
 			<?php } ?>
 

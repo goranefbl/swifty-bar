@@ -11,7 +11,7 @@ class sb_bar_Admin {
 	/**
 	 * The ID of this plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.0 
 	 * @access   private
 	 * @var      string    $sb_bar    The ID of this plugin.
 	 */
@@ -56,10 +56,10 @@ class sb_bar_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function display_plugin_admin_page(){
-
+	public function display_plugin_admin_page(){	
+		
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/sb-bar-admin-display.php';
-
+		
 	}
 
 	/**
@@ -77,7 +77,7 @@ class sb_bar_Admin {
 	}
 
 	/**
-	 * Creates our settings sections with fields etc.
+	 * Creates our settings sections with fields etc. 
 	 *
 	 * @since    1.0.0
 	 */
@@ -110,13 +110,6 @@ class sb_bar_Admin {
 			'post-type',
 			apply_filters( $this->sb_bar . '-post-type-label', __( 'Show on which post types', $this->sb_bar ) ),
 			array( $this, 'post_type' ),
-			$this->sb_bar,
-			$this->sb_bar . '-display-options' // section to add to
-		);
-		add_settings_field(
-			'taxonomy',
-			apply_filters( $this->sb_bar . '-taxonomy-label', __( 'Displayed taxonomy', $this->sb_bar ) ),
-			array( $this, 'taxonomy' ),
 			$this->sb_bar,
 			$this->sb_bar . '-display-options' // section to add to
 		);
@@ -212,12 +205,12 @@ class sb_bar_Admin {
 			// Loop through the input and sanitize each of the values
 			foreach ( $input as $key => $val ) {
 
-				if( $key == 'post-type' || 'taxonomy' == $key ) { // dont sanitize array
+				if($key == 'post-type') { // dont sanitize array
 					$new_input[ $key ] = $val;
 				} else {
 					$new_input[ $key ] = sanitize_text_field( $val );
 				}
-
+				
 			}
 
 		}
@@ -288,64 +281,14 @@ class sb_bar_Admin {
 				$checked = in_array($post_type, $option) ? 'checked="checked"' : ''; ?>
 				<p>
 					<input type="checkbox" id="<?php echo $this->sb_bar; ?>_options[post-type]" name="<?php echo $this->sb_bar; ?>_options[post-type][]" value="<?php echo esc_attr( $post_type ); ?>" <?php echo $checked; ?> />
-		   			<?php echo $post_type; ?>
+		   			<?php echo $post_type; ?>			
 		   		</p>
 			<?php }
-
+				
 		}  ?>
 			<p class="description">IMPORTANT: Bar will not show up untill one of these is checked.</p>
-	<?php
+	<?php 
 	} // post_type()
-
-	/**
-	 * Taxonomy
-	 *
-	 * @since 		1.0.0
-	 * @return 		mixed 			The settings field
-	 */
-	public function taxonomy() {
-
-		$options  	= get_option( $this->sb_bar . '_options' );
-
-		$post_types = get_post_types( array( 'public' => TRUE ), 'objects' );
-		unset( $post_types['page'] );
-		unset( $post_types['attachment'] );
-
-		foreach( $post_types as $post_type ) {
-
-			$supported_taxonomies = get_object_taxonomies( $post_type->name );
-
-			if ( ! empty( $supported_taxonomies ) ) {
-
-				$option = $supported_taxonomies[0];
-
-				if ( ! empty( $options['taxonomy'][ $post_type->name ] ) ) {
-					$option = $options['taxonomy'][ $post_type->name ];
-				}
-
-				echo $post_type->labels->name . ': ';
-				?>
-				<select id="<?php echo $this->sb_bar; ?>_options[taxonomy][<?php echo $post_type->name; ?>]" name="<?php echo $this->sb_bar; ?>_options[taxonomy][<?php echo $post_type->name; ?>]" >
-				<?php
-
-					foreach ( $supported_taxonomies as $supported_taxonomy ) {
-					?>
-						<option value="<?php echo $supported_taxonomy; ?>" <?php selected( $option, $supported_taxonomy ) ?> ><?php echo get_taxonomy( $supported_taxonomy )->labels->name; ?></option>
-					<?php
-					}
-				?>
-				</select>
-				<br />
-				<?php
-			}
-			
-		}
-
-		?>
-		<p class="description">Which taxonomy do you want displayed for each post type?</p>
-		<?php
-
-	} // prev_next_posts()
 
 	/**
 	 * Time to read text field
