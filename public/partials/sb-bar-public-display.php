@@ -4,8 +4,7 @@
 
 	$post_id = get_queried_object_id();
 	$author_id = get_post_field( 'post_author', $post_id );
-	$first_name = get_the_author_meta( 'first_name', $author_id );
-	$last_name = get_the_author_meta( 'last_name', $author_id );
+	$author_name = get_the_author_meta( 'display_name', $author_id );
 	$comment_count = get_post_field( 'comment_count', $post_id );
 	$content = get_post_field( 'post_content', $post_id );
 	$category = get_the_category($post_id);
@@ -35,7 +34,7 @@
 	} else {
 		$commentsID = "comments";
 	}
-	
+
 	// Time to read text
 	if(isset($options["ttr-text"]) && $options["ttr-text"] != '') {
 		$ttr_text = $options["ttr-text"];
@@ -57,7 +56,7 @@
 		$adjacent = false;
 	}
 
-	
+
 	if(is_singular() && in_array(get_post_type( $post_id ), $posttype)) {
 	?>
 
@@ -80,9 +79,7 @@
 			<div class="sb_post-data">
 				<h2><?php the_title(); ?></h2>
 				<?php if(!isset($options["disable-author"])) { ?>
-				<?php if($first_name != '' || $last_name != '') { ?>
-					<span class="sb_author"><?php echo $by_text; ?> <?php echo $first_name . ' ' . $last_name; ?></span>
-				<?php } ?>
+					<span class="sb_author"><?php echo $by_text; ?> <?php echo $author_name; ?></span>
 				<?php } ?>
 				<?php if(!isset($options["disable-ttr"])) { ?>
 				<span class="sb_ttr"><?php echo $ttr_text; ?> <?php echo $ttr; ?> min</span>
@@ -102,16 +99,16 @@
 							<span class="sb_title">
 								<span class="sb_category">
 									<?php if(is_singular( 'post' )) {
-											$category = get_the_category($next_post->ID); echo $category[0]->cat_name; 
+											$category = get_the_category($next_post->ID); echo $category[0]->cat_name;
 										} ?>
 								</span>
 								<span class="sb_tcategory">
-									<?php 
-										$post_title = substr(get_the_title( $next_post->ID ),0,50); 
-										echo $post_title; 
-										if (strlen($post_title) >48){ 
-											echo '…'; 
-										} 
+									<?php
+										$post_title = substr(get_the_title( $next_post->ID ),0,50);
+										echo $post_title;
+										if (strlen($post_title) >48){
+											echo '…';
+										}
 									?>
 								</span>
 							</span>
@@ -130,16 +127,16 @@
 							<span class="sb_title">
 								<span class="sb_category">
 									<?php if(is_singular( 'post' )) {
-											$category = get_the_category($prev_post->ID); echo $category[0]->cat_name; 
+											$category = get_the_category($prev_post->ID); echo $category[0]->cat_name;
 										} ?>
 								</span>
 								<span class="sb_tcategory">
-									<?php 
-										$post_title = substr(get_the_title( $prev_post->ID ),0,50); 
-										echo $post_title; 
-										if (strlen($post_title) >48){ 
-											echo '…'; 
-										} 
+									<?php
+										$post_title = substr(get_the_title( $prev_post->ID ),0,50);
+										echo $post_title;
+										if (strlen($post_title) >48){
+											echo '…';
+										}
 									?>
 								</span>
 							</span>
@@ -160,7 +157,7 @@
 
 			<?php if(!isset($options["disable-comments"])) { ?>
 			<div class="sb_actions">
-				<a class="sb_comment" href="#<?php echo $commentsID; ?>"><?php echo $comment_count; ?><i class="icon-comment"></i></a>		
+				<a class="sb_comment" href="#<?php echo $commentsID; ?>"><?php echo $comment_count; ?><i class="icon-comment"></i></a>
 			</div>
 			<?php } ?>
 
