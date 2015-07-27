@@ -10,12 +10,21 @@
 	$category = get_the_category($post_id);
 	$word_count = str_word_count( strip_tags( $content ) );
 	$post_type = get_post_type_object( get_post_type($post_id) ); //Needed for custom post types
+	$adjacent = false; //show prev/next post items
+	$tag_or_cat = "category"; // prev/next cat or tag
 	$posttype = array();
 
 
 	//Post Type
 	if(isset($options["post-type"]) && $options["post-type"] != '') {
 		$posttype = $options["post-type"];
+	}
+
+	//Post Type
+	if(isset($options["custom-color"]) && $options["custom-color"] != '') {
+		$color = $options["custom-color"];
+	} else {
+		$color = "default";
 	}
 
 	//TTR
@@ -50,17 +59,22 @@
 	}
 
 	//New posts or from category
-	if(isset($options["prev_next_posts"]) && $options["prev_next_posts"] == 'same') {
-		$adjacent = true;
-	} else {
-		$adjacent = false;
+	if(isset($options["prev-next-posts"])) {
+		if($options["prev-next-posts"] == 'cat') {
+			$adjacent = true;
+			$tag_or_cat = "category";
+		} else if ($options["prev-next-posts"] == 'tags') {
+			$adjacent = true;
+			$tag_or_cat = "post_tag";
+		}
 	}
+
 
 
 	if(is_singular() && in_array(get_post_type( $post_id ), $posttype)) {
 	?>
 	<!-- Swifty Bar -->
-	<div id="sb_super_bar">
+	<div id="sb_super_bar" class="<?php echo $color; ?>">
 
 		<?php if(!isset($options["disable-ttr"])) { ?>
 			<div class="sbprogress-container"><span class="sbprogress-bar"></span></div>
@@ -87,7 +101,7 @@
 			</div>
 
 			<div class="sb_prev-next-posts">
-				<?php $next_post = get_adjacent_post( $adjacent, '', false, 'category' ); ?>
+				<?php $next_post = get_adjacent_post( $adjacent, '', false, $tag_or_cat ); ?>
 				<?php if ( is_a( $next_post, 'WP_Post' ) ) { ?>
 					<a href="<?php echo get_permalink( $next_post->ID ); ?>"><i class="sbicon-right-open-1"></i></a>
 					<div class="sb_next_post">
@@ -115,7 +129,7 @@
 						</div>
 					</div>
 				<?php } ?>
-				<?php $prev_post = get_adjacent_post( $adjacent, '', true, 'category' ); ?>
+				<?php $prev_post = get_adjacent_post( $adjacent, '', true, $tag_or_cat ); ?>
 				<?php if ( is_a( $prev_post, 'WP_Post' ) ) { ?>
 					<a href="<?php echo get_permalink( $prev_post->ID ); ?>"><i class="sbicon-left-open-1"></i></a>
 					<div class="sb_next_post">

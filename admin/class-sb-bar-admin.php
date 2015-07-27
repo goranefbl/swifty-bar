@@ -149,6 +149,13 @@ class sb_bar_Admin {
 			$this->sb_bar,
 			$this->sb_bar . '-display-options'
 		);
+		add_settings_field(
+			'custom-color',
+			apply_filters( $this->sb_bar . '-custom-color', __( 'Choose Color', $this->sb_bar ) ),
+			array( $this, 'custom_color' ),
+			$this->sb_bar,
+			$this->sb_bar . '-display-options'
+		);
 
 		// add_settings_section( $id, $title, $callback, $menu_slug );
 		add_settings_section(
@@ -391,7 +398,8 @@ class sb_bar_Admin {
 
 		?>
 		<select id="<?php echo $this->sb_bar; ?>_options[prev-next-posts]" name="<?php echo $this->sb_bar; ?>_options[prev-next-posts]" >
-			<option value="same" <?php selected( $option, "same" ); ?> >Posts from Same Category</option>
+			<option value="cat" <?php selected( $option, "cat" ); ?> >Posts from Same Category</option>
+			<option value="tags" <?php selected( $option, "tags" ); ?> >Posts with same Tags</option>
 			<option value="all" <?php selected( $option, "all" ); ?> >All Posts</option>
 		</select>
 		<p class="description">Do you want prev/next buttons to show posts from all categories or just from current post category?</p>
@@ -399,6 +407,35 @@ class sb_bar_Admin {
 
 	} // prev_next_posts()
 
+	/**
+	 * Custom Color Scheme
+	 *
+	 * @since 		1.1.0
+	 * @return 		mixed 			The settings field
+	 */
+	public function custom_color() {
+
+		$options  	= get_option( $this->sb_bar . '_options' );
+		$option 	= 'default';
+
+		if ( ! empty( $options['custom-color'] ) ) {
+			$option = $options['custom-color'];
+		}
+
+		?>
+		<select id="<?php echo $this->sb_bar; ?>_options[custom-color]" name="<?php echo $this->sb_bar; ?>_options[custom-color]" >
+			<option value="default" <?php selected( $option, "default" ); ?> >Default (Everyone loves blue)</option>
+			<option value="white" <?php selected( $option, "white" ); ?> >Clouds(White)</option>
+			<option value="green" <?php selected( $option, "green" ); ?> >Green</option>
+			<option value="orange" <?php selected( $option, "orange" ); ?> >Orange</option>
+			<option value="red" <?php selected( $option, "red" ); ?> >Red</option>
+			<option value="purple" <?php selected( $option, "purple" ); ?> >Purple</option>
+			<option value="asphalt" <?php selected( $option, "asphalt" ); ?> >Wet Asphalt</option>
+		</select>
+		<p class="description">Choose one of predefined colors. Color picker will come later, remember - keeping plugin fast and light is priority.</p>
+		<?php
+
+	} // custom_color()
 
 	/**
 	 * Disable Author Box
