@@ -59,7 +59,7 @@
 
 	if(is_singular() && in_array(get_post_type( $post_id ), $posttype)) {
 	?>
-
+	<!-- Swifty Bar -->
 	<div id="sb_super_bar">
 
 		<?php if(!isset($options["disable-ttr"])) { ?>
@@ -89,7 +89,7 @@
 			<div class="sb_prev-next-posts">
 				<?php $next_post = get_adjacent_post( $adjacent, '', false, 'category' ); ?>
 				<?php if ( is_a( $next_post, 'WP_Post' ) ) { ?>
-					<a href="<?php echo get_permalink( $next_post->ID ); ?>"><i class="icon-right-open-1"></i></a>
+					<a href="<?php echo get_permalink( $next_post->ID ); ?>"><i class="sbicon-right-open-1"></i></a>
 					<div class="sb_next_post">
 						<div class="sb_next_post_image">
 							<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id($next_post->ID), 'sb_image_size' ); ?>
@@ -117,7 +117,7 @@
 				<?php } ?>
 				<?php $prev_post = get_adjacent_post( $adjacent, '', true, 'category' ); ?>
 				<?php if ( is_a( $prev_post, 'WP_Post' ) ) { ?>
-					<a href="<?php echo get_permalink( $prev_post->ID ); ?>"><i class="icon-left-open-1"></i></a>
+					<a href="<?php echo get_permalink( $prev_post->ID ); ?>"><i class="sbicon-left-open-1"></i></a>
 					<div class="sb_next_post">
 						<div class="sb_next_post_image">
 							<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id($prev_post->ID), 'sb_image_size' ); ?>
@@ -147,17 +147,17 @@
 
 			<?php if(!isset($options["disable-share"])) { ?>
 			<ul class="sb_share">
-			    <li class="sbfacebook"><a href="#" title="Share on Facebook" class="sbsoc-fb" target="_blank"><i class="icon-facebook"></i><span>Share on Facebook</span></a></li>
-			    <li class="sbtwitter"><a href="#" data-title="<?php the_title(); ?>" title="Share on Twitter" class="sbsoc-tw" target="_blank" ><i class="icon-twitter"></i><span>Share on Twitter</span></a></li>
-			    <li class="sbgoogle-plus"><a href="#" title="Share on Google Plus" class="sbsoc-gplus" target="_blank"><i class="icon-gplus"></i><span>Share on Google Plus</span></a></li>
-			    <li class="sblinkedin"><a href="#" title="Share on Linkedin" class="sbsoc-linked" target="_blank"><i class="icon-linkedin"></i><span>Share on LinkedIn</span></a></li>
-    			<li class="sbpinterest"><a href="#" title="Share on Pinterest" class="sbsoc-pint" target="_blank"><i class="icon-pinterest"></i><span>Share on Pinterest</span></a></li>
+			    <li class="sbfacebook"><a href="#" title="Share on Facebook" class="sbsoc-fb" target="_blank"><i class="sbicon-facebook"></i><span>Share on Facebook</span></a></li>
+			    <li class="sbtwitter"><a href="#" data-title="<?php the_title(); ?>" title="Share on Twitter" class="sbsoc-tw" target="_blank" ><i class="sbicon-twitter"></i><span>Share on Twitter</span></a></li>
+			    <li class="sbgoogle-plus"><a href="#" title="Share on Google Plus" class="sbsoc-gplus" target="_blank"><i class="sbicon-gplus"></i><span>Share on Google Plus</span></a></li>
+			    <li class="sblinkedin"><a href="#" title="Share on Linkedin" class="sbsoc-linked" target="_blank"><i class="sbicon-linkedin"></i><span>Share on LinkedIn</span></a></li>
+    			<li class="sbpinterest"><a href="#" title="Share on Pinterest" class="sbsoc-pint" target="_blank"><i class="sbicon-pinterest"></i><span>Share on Pinterest</span></a></li>
 			</ul>
 			<?php } ?>
 
 			<?php if(!isset($options["disable-comments"])) { ?>
 			<div class="sb_actions">
-				<a class="sb_comment" href="#<?php echo $commentsID; ?>"><?php echo $comment_count; ?><i class="icon-comment"></i></a>
+				<a class="sb_comment" href="#<?php echo $commentsID; ?>"><?php echo $comment_count; ?><i class="sbicon-comment"></i></a>
 			</div>
 			<?php } ?>
 
