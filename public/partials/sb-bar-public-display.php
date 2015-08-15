@@ -13,7 +13,7 @@
 	$adjacent = false; //show prev/next post items
 	$tag_or_cat = "category"; // prev/next cat or tag
 	$posttype = array();
-	$shares = $this->social_shares($post_id);
+	$social = new sb_bar_Social;
 
 
 	//Post Type
@@ -159,11 +159,10 @@
 					</div>
 				<?php } ?>
 			</div>
-
 			<?php if(!isset($options["disable-share"])) { ?>
 			<ul class="sb_share">
 			    <li class="sbfacebook"><a href="#" title="Share on Facebook" class="sbsoc-fb" target="_blank"><i class="sbicon-facebook"></i><span>Share on Facebook</span></a></li>
-			    <li class="sbtwitter"><a href="#" data-title="<?php the_title(); ?>" title="Share on Twitter" class="sbsoc-tw" target="_blank" ><i class="sbicon-twitter"></i><span>Share on Twitter</span></a></li>
+			    <li class="sbtwitter"><a href="#" data-title="<?php the_title(); ?>" title="Share on Twitter" class="sbsoc-tw" target="_blank" ><i class="sbicon-twitter"></i><div><?php var_dump($social->get_shares_all($post_id));?></div><span>Share on Twitter</span></a></li>
 			    <li class="sbgoogle-plus"><a href="#" title="Share on Google Plus" class="sbsoc-gplus" target="_blank"><i class="sbicon-gplus"></i><span>Share on Google Plus</span></a></li>
 			    <li class="sblinkedin"><a href="#" title="Share on Linkedin" class="sbsoc-linked" target="_blank"><i class="sbicon-linkedin"></i><span>Share on LinkedIn</span></a></li>
     			<li class="sbpinterest"><a href="#" title="Share on Pinterest" class="sbsoc-pint" target="_blank"><i class="sbicon-pinterest"></i><span>Share on Pinterest</span></a></li>
