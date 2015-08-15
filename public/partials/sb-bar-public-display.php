@@ -13,6 +13,7 @@
 	$adjacent = false; //show prev/next post items
 	$tag_or_cat = "category"; // prev/next cat or tag
 	$posttype = array();
+	$shares = $this->social_shares($post_id);
 
 
 	//Post Type

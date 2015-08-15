@@ -111,4 +111,34 @@ class sb_bar_Public {
 
 	}
 
+
+	/**
+	 * Social 
+	 *
+	 * @since    1.0.6
+	 */
+	public function social_shares($post_id) {
+
+	$shares = array();
+	//$current_url = get_permalink($post_id);
+	$current_url = 'http://blog.newswhip.com/index.php/2014/11/biggest-linkedin-publishers-october-2014#7HboYvm2TzxAkhUX.97'; //test
+		
+	$twitter = json_decode(file_get_contents('http://cdn.api.twitter.com/1/urls/count.json?url=' . $current_url), true);
+	$fb = json_decode(file_get_contents('http://graph.facebook.com/?id=' . $current_url), true);
+	
+	//LinkedIn and Pinterest don't return clean JSON so we use regex
+	$linkedin = file_get_contents('http://www.linkedin.com/countserv/count/share?url=' . $current_url);
+	$linkedin = json_decode(preg_replace('/^IN\.Tags\.Share\.handleCount\((.*)$/s', "\\1", $linkedin), true);
+	
+	$pinterest = file_get_contents('http://api.pinterest.com/v1/urls/count.json?url=' . $current_url);
+	$pinterest = json_decode(preg_replace('/^receiveCount\((.*)\)$/', "\\1", $pinterest),true);
+	
+	$shares['twitter'] = $twitter['count'] == NULL ? 0 : $twitter['count'];
+	$shares['fb'] = $fb['shares'] == NULL ? 0 : $fb['shares'];
+	$shares['linkedin'] = $linkedin['count'] == NULL ? 0 : $linkedin['count'];
+	$shares['pinterest'] = $pinterest['count'] == NULL ? 0 : $pinterest['count'];
+
+	return $shares;
+	}
+
 }
