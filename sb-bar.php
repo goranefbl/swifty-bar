@@ -10,7 +10,7 @@
  * Plugin Name:       Swifty Bar
  * Plugin URI:        http://www.itsgoran.com/swiftybar/
  * Description:       Adds sticky bar at the bottom of post that shows category, post title, author, time needed to read article, share buttons and previouse/next post links. This plugin can easly replace your social share buttons while giving readers better experience with much more options.
- * Version:           1.0.5
+ * Version:           1.1.0
  * Author:            Goran Jakovljevic
  * Author URI:        http://www.itsgoran.com/
  * License:           GPL-2.0+

@@ -2,8 +2,8 @@
 Contributors: goran87
 Tags: share buttons,sticky bar, footer bar, previous next posts, time to read, progress bar, simple share, share icons, sticky share,author,social,twitter,facebook
 Requires at least: 3.0
-Tested up to: 4.2.2
-Stable tag: 1.0.3
+Tested up to: 4.2.3
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,6 +47,14 @@ We will add them slowly in new updates. Post on forums which one you need and we
 2. screenshot-2.png
 
 == Changelog ==
+
+= 1.1.0 =
+* icon- class changed to sbicon class because of some theme conflicts
+* Author is taken now from display name instead of first and last name.
+* Added 7 colors to chose from.
+* Small quick fixes.
+* Ability to chose prev/next posts from tags or category.
+* Fixed issue when choosing posts to display from just category would not work.
 
 = 1.0.5 =
 * Made prev/next links smaller on 320px to have comments fit on that resolution - 7 July 2015

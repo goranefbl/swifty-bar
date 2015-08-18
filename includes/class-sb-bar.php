@@ -68,7 +68,7 @@ class sb_bar {
 	public function __construct() {
 
 		$this->sb_bar = 'sb_bar';
-		$this->version = '1.0.5';
+		$this->version = '1.1.0';
 
 		$this->load_dependencies();
 		$this->define_global_hooks(); // Call to new method that will show for both front and back
