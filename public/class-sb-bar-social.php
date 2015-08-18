@@ -19,7 +19,8 @@ class sb_bar_Social {
 	protected $current_url;
 
 	function __construct() {
-		$this->current_url = 'http://makezine.com/2015/08/14/nasa-releases-3d-printable-curiosity-rover/'; //test
+		//$this->current_url = get_permalink($post_id);
+		$this->current_url = 'http://techcrunch.com/2015/08/15/navigating-the-new-waters-of-fundraising'; //test
 	}
 
 
@@ -30,7 +31,7 @@ class sb_bar_Social {
 		foreach($networks as $network) {
 			if(get_transient('sb_bar_option_' . $network .'_shares') == NULL) {
 				$this->shares[$network] = $this->{get_shares_.$network}($post_id);
-				set_transient('sb_bar_option_'.$network.'_shares', $this->shares[$network], 30);
+				set_transient('sb_bar_option_'.$network.'_shares', $this->shares[$network], 60*60);
 			}
 			else $this->shares[$network] = (int)get_transient('sb_bar_option_'.$network.'_shares');
 		
@@ -113,5 +114,20 @@ class sb_bar_Social {
 		return $count;
 	}
 
+
+	private function get_post_transient($transient) {
+
+		$transient = get_transient('');
+		if(!empty($transient)) 
+			return $transient;
+		else 
+			return FALSE;
+
+	}
+
+	private function set_post_transient($new_transient) {
+
+
+	}
 
 }

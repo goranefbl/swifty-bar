@@ -13,7 +13,8 @@
 	$adjacent = false; //show prev/next post items
 	$tag_or_cat = "category"; // prev/next cat or tag
 	$posttype = array();
-	$social = new sb_bar_Social;
+	$social = new sb_bar_Social($post_id);
+	$social_shares = $social->get_shares_all();
 
 
 	//Post Type
@@ -158,14 +159,16 @@
 						</div>
 					</div>
 				<?php } ?>
+				<?php var_dump($social); ?>
 			</div>
 			<?php if(!isset($options["disable-share"])) { ?>
 			<ul class="sb_share">
-			    <li class="sbfacebook"><a href="#" title="Share on Facebook" class="sbsoc-fb" target="_blank"><i class="sbicon-facebook"></i><span>Share on Facebook</span></a></li>
-			    <li class="sbtwitter"><a href="#" data-title="<?php the_title(); ?>" title="Share on Twitter" class="sbsoc-tw" target="_blank" ><i class="sbicon-twitter"></i><div><?php var_dump($social->get_shares_all($post_id));?></div><span>Share on Twitter</span></a></li>
-			    <li class="sbgoogle-plus"><a href="#" title="Share on Google Plus" class="sbsoc-gplus" target="_blank"><i class="sbicon-gplus"></i><span>Share on Google Plus</span></a></li>
-			    <li class="sblinkedin"><a href="#" title="Share on Linkedin" class="sbsoc-linked" target="_blank"><i class="sbicon-linkedin"></i><span>Share on LinkedIn</span></a></li>
-    			<li class="sbpinterest"><a href="#" title="Share on Pinterest" class="sbsoc-pint" target="_blank"><i class="sbicon-pinterest"></i><span>Share on Pinterest</span></a></li>
+
+			    <li class="sbfacebook"><a href="#" title="Share on Facebook" class="sbsoc-fb" target="_blank"><i class="sbicon-facebook"></i><span>Share on Facebook</span></a><div><?php echo $social->share_count_pretty($social_shares['facebook']);?></div></li>
+			    <li class="sbtwitter"><a href="#" data-title="<?php the_title(); ?>" title="Share on Twitter" class="sbsoc-tw" target="_blank" ><i class="sbicon-twitter"></i><div><?php echo $social->share_count_pretty($social_shares['twitter']);?></div><span>Share on Twitter</span></a></li>
+			    <li class="sbgoogle-plus"><a href="#" title="Share on Google Plus" class="sbsoc-gplus" target="_blank"><i class="sbicon-gplus"></i><div><?php echo $social->share_count_pretty($social_shares['googleplus']);?></div><span>Share on Google Plus</span></a></li>
+			    <li class="sblinkedin"><a href="#" title="Share on Linkedin" class="sbsoc-linked" target="_blank"><i class="sbicon-linkedin"></i><div><?php echo $social->share_count_pretty($social_shares['linkedin']);?></div><span>Share on LinkedIn</span></a></li>
+    			<li class="sbpinterest"><a href="#" title="Share on Pinterest" class="sbsoc-pint" target="_blank"><i class="sbicon-pinterest"></i><div><?php echo $social->share_count_pretty($social_shares['pinterest']);?></div><span>Share on Pinterest</span></a></li>
 			</ul>
 			<?php } ?>
 

@@ -121,7 +121,7 @@ class sb_bar {
 		/**
 		 * The class responsible for storing and providing shared count info.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-sb-bar-social.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-sb-bar-social.php';
 
 		$this->loader = new sb_bar_Loader();
 
