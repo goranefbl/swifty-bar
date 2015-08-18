@@ -2,8 +2,8 @@
 Contributors: goran87
 Tags: share buttons,sticky bar, footer bar, previous next posts, time to read, progress bar, simple share, share icons, sticky share,author,social,twitter,facebook
 Requires at least: 3.0
-Tested up to: 4.2.3
-Stable tag: 1.1.0
+Tested up to: 4.3
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,6 +47,11 @@ We will add them slowly in new updates. Post on forums which one you need and we
 2. screenshot-2.png
 
 == Changelog ==
+
+= 1.1.1 =
+* sbicon- class changed to sbicn to remove conflict with icomoon font
+* Limit title length, so that share does not get hidden in posts with long titles.
+* Chose which social share button to display.
 
 = 1.1.0 =
 * icon- class changed to sbicon class because of some theme conflicts

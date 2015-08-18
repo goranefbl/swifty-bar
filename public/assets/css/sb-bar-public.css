@@ -9,7 +9,7 @@
   font-style: normal;
 }
 
-[class^="sbicon-"]:before, [class*=" sbicon-"]:before {
+[class^="sbicn-"]:before, [class*=" sbicn-"]:before {
   font-family: "sbfontello";
   font-style: normal;
   font-weight: normal;
@@ -23,16 +23,16 @@
   -moz-osx-font-smoothing: grayscale;
 }
  
-.sbicon-facebook:before { content: '\e804'; } 
-.sbicon-gplus:before { content: '\e805'; }
-.sbicon-pinterest:before { content: '\e806'; }
-.sbicon-linkedin:before { content: '\e807'; }
-.sbicon-twitter:before { content: '\e808'; }
-.sbicon-comment:before { content: '\e809'; }
-.sbicon-comment-alt:before { content: '\e80a'; }
-.sbicon-comment-1:before { content: '\e80b'; }
-.sbicon-left-open-1:before { content: '\e80c'; }
-.sbicon-right-open-1:before { content: '\e80d'; }
+.sbicn-facebook:before { content: '\e804'; } 
+.sbicn-gplus:before { content: '\e805'; }
+.sbicn-pinterest:before { content: '\e806'; }
+.sbicn-linkedin:before { content: '\e807'; }
+.sbicn-twitter:before { content: '\e808'; }
+.sbicn-comment:before { content: '\e809'; }
+.sbicn-comment-alt:before { content: '\e80a'; }
+.sbicn-comment-1:before { content: '\e80b'; }
+.sbicn-left-open-1:before { content: '\e80c'; }
+.sbicn-right-open-1:before { content: '\e80d'; }
 
 body.single {
   margin-bottom: 46px!important;

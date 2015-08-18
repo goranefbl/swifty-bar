@@ -156,6 +156,13 @@ class sb_bar_Admin {
 			$this->sb_bar,
 			$this->sb_bar . '-display-options'
 		);
+		add_settings_field(
+			'custom-title',
+			apply_filters( $this->sb_bar . '-custom-title', __( 'Shorten Big Post Titles', $this->sb_bar ) ),
+			array( $this, 'custom_title' ),
+			$this->sb_bar,
+			$this->sb_bar . '-display-options'
+		);
 
 		// add_settings_section( $id, $title, $callback, $menu_slug );
 		add_settings_section(
@@ -193,7 +200,41 @@ class sb_bar_Admin {
 			$this->sb_bar . '-enable',
 			$this->sb_bar . '-enable-options'
 		);
-
+		add_settings_field(
+			'disable-pinterest',
+			apply_filters( $this->sb_bar . '-disable-pinterest', __( 'Disable Pinterest Button', $this->sb_bar ) ),
+			array( $this, 'disable_pinterest' ),
+			$this->sb_bar . '-enable',
+			$this->sb_bar . '-enable-options'
+		);
+		add_settings_field(
+			'disable-linkedin',
+			apply_filters( $this->sb_bar . '-disable-linkedin', __( 'Disable LinkedIn Button', $this->sb_bar ) ),
+			array( $this, 'disable_linkedin' ),
+			$this->sb_bar . '-enable',
+			$this->sb_bar . '-enable-options'
+		);
+		add_settings_field(
+			'disable-googleplus',
+			apply_filters( $this->sb_bar . '-disable-googleplus', __( 'Disable Google Plus Button', $this->sb_bar ) ),
+			array( $this, 'disable_googleplus' ),
+			$this->sb_bar . '-enable',
+			$this->sb_bar . '-enable-options'
+		);
+		add_settings_field(
+			'disable-twitter',
+			apply_filters( $this->sb_bar . '-disable-twitter', __( 'Disable Twitter Button', $this->sb_bar ) ),
+			array( $this, 'disable_twitter' ),
+			$this->sb_bar . '-enable',
+			$this->sb_bar . '-enable-options'
+		);
+		add_settings_field(
+			'disable-facebook',
+			apply_filters( $this->sb_bar . '-disable-facebook', __( 'Disable Facebook Button (Why would you do that?)', $this->sb_bar ) ),
+			array( $this, 'disable_facebook' ),
+			$this->sb_bar . '-enable',
+			$this->sb_bar . '-enable-options'
+		);
 	}
 
 	/**
@@ -438,6 +479,27 @@ class sb_bar_Admin {
 	} // custom_color()
 
 	/**
+	 * Custom Title
+	 *
+	 * @since 		1.1.1
+	 * @return 		mixed 			The settings field
+	 */
+	public function custom_title() {
+
+		$options  	= get_option( $this->sb_bar . '_options' );
+		$option 	= '';
+
+		if ( ! empty( $options['custom-title'] ) ) {
+			$option = $options['custom-title'];
+		}
+
+		?>
+		<input type="text" id="<?php echo $this->sb_bar; ?>_options[custom-title]" name="<?php echo $this->sb_bar; ?>_options[custom-title]" value="<?php echo esc_attr( $option ); ?>">
+		<p class="description">You can shorten long post titles so that share buttons can fit. Enter maximum number of letters title can have before cutting it and placing three dots. Leave blank to always show full title.</p>
+		<?php
+	} // custom_title()
+
+	/**
 	 * Disable Author Box
 	 *
 	 * @since 		1.0.0
@@ -517,5 +579,103 @@ class sb_bar_Admin {
 		<?php
 	} // disable_comments()
 
+	/**
+	 * Disable Pinterest Button
+	 *
+	 * @since 		1.1.1
+	 * @return 		mixed 			The settings field
+	 */
+	public function disable_pinterest() {
 
+		$options 	= get_option( $this->sb_bar . '_options' );
+		$option 	= 0;
+
+		if ( ! empty( $options['disable-pinterest'] ) ) {
+			$option = $options['disable-pinterest'];
+		}
+
+		?><input type="checkbox" id="<?php echo $this->sb_bar; ?>_options[disable-pinterest]" name="<?php echo $this->sb_bar; ?>_options[disable-pinterest]" value="1" <?php checked( $option, 1 , true ); ?> />
+
+		<?php
+	} // disable_pinterest()
+
+	/**
+	 * Disable Linkedin Button
+	 *
+	 * @since 		1.1.1
+	 * @return 		mixed 			The settings field
+	 */
+	public function disable_linkedin() {
+
+		$options 	= get_option( $this->sb_bar . '_options' );
+		$option 	= 0;
+
+		if ( ! empty( $options['disable-linkedin'] ) ) {
+			$option = $options['disable-linkedin'];
+		}
+
+		?><input type="checkbox" id="<?php echo $this->sb_bar; ?>_options[disable-linkedin]" name="<?php echo $this->sb_bar; ?>_options[disable-linkedin]" value="1" <?php checked( $option, 1 , true ); ?> />
+
+		<?php
+	} // disable_linkedin()
+
+	/**
+	 * Disable Google Plus
+	 *
+	 * @since 		1.1.1
+	 * @return 		mixed 			The settings field
+	 */
+	public function disable_googleplus() {
+
+		$options 	= get_option( $this->sb_bar . '_options' );
+		$option 	= 0;
+
+		if ( ! empty( $options['disable-googleplus'] ) ) {
+			$option = $options['disable-googleplus'];
+		}
+
+		?><input type="checkbox" id="<?php echo $this->sb_bar; ?>_options[disable-googleplus]" name="<?php echo $this->sb_bar; ?>_options[disable-googleplus]" value="1" <?php checked( $option, 1 , true ); ?> />
+
+		<?php
+	} // disable_googleplus()
+
+	/**
+	 * Disable Twitter
+	 *
+	 * @since 		1.1.1
+	 * @return 		mixed 			The settings field
+	 */
+	public function disable_twitter() {
+
+		$options 	= get_option( $this->sb_bar . '_options' );
+		$option 	= 0;
+
+		if ( ! empty( $options['disable-twitter'] ) ) {
+			$option = $options['disable-twitter'];
+		}
+
+		?><input type="checkbox" id="<?php echo $this->sb_bar; ?>_options[disable-twitter]" name="<?php echo $this->sb_bar; ?>_options[disable-twitter]" value="1" <?php checked( $option, 1 , true ); ?> />
+
+		<?php
+	} // disable_twitter()
+
+	/**
+	 * Disable Facebook
+	 *
+	 * @since 		1.1.1
+	 * @return 		mixed 			The settings field
+	 */
+	public function disable_facebook() {
+
+		$options 	= get_option( $this->sb_bar . '_options' );
+		$option 	= 0;
+
+		if ( ! empty( $options['disable-facebook'] ) ) {
+			$option = $options['disable-facebook'];
+		}
+
+		?><input type="checkbox" id="<?php echo $this->sb_bar; ?>_options[disable-facebook]" name="<?php echo $this->sb_bar; ?>_options[disable-facebook]" value="1" <?php checked( $option, 1 , true ); ?> />
+
+		<?php
+	} // disable_facebook()
 }
