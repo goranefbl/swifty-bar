@@ -13,8 +13,10 @@
 	$adjacent = false; //show prev/next post items
 	$tag_or_cat = "category"; // prev/next cat or tag
 	$posttype = array();
-	$social = new sb_bar_Social($post_id);
-	$social_shares = $social->get_shares_all();
+	if(!isset($options["disable-share"])) {
+		$social = new sb_bar_Social($post_id);
+		$social_shares = $social->get_shares_all();
+	}
 
 
 	//Post Type
@@ -171,6 +173,7 @@
 					</div>
 				<?php } ?>
 			</div>
+
 			<?php if(!isset($options["disable-share"])) { ?>
 			<ul class="sb_share">
 				<?php if(!isset($options["disable-facebook"])) { ?>

@@ -32,6 +32,15 @@ class sb_bar_Social {
 	private $version;
 
 	/**
+	 * Plugin options
+	 *
+	 * @since    1.0.6
+	 * @access   private
+	 * @var      array    $options    Current plugin options
+	 */
+	private $options;
+
+	/**
 	 * The name of the transient settings
 	 *
 	 * @since    1.0.6
@@ -42,31 +51,35 @@ class sb_bar_Social {
 
 
 	function __construct($post_id) {
-
+		
 		$this->current_url = get_permalink($post_id);
-		//$this->current_url = 'http://www.phptherightway.com/pages/Design-Patterns.html'; //test
 
 		$this->transient_name = 'sb_bar_' . $post_id . '_shares';
 		$this->post_id = $post_id;
-
 
 	}
 
 
 	public function get_shares_all() {
-
-		$networks = array('twitter', 'facebook', 'linkedin', 'pinterest', 'googleplus');
+		$activeNetworks = array();
+		$options = (get_option('sb_bar_options') ? array_keys (get_option('sb_bar_options')) : false);
+		$networks = array('twitter', 'facebook', 'linkedin', 'pinterest', 'googleplus'); 
+		
+		//Filter disabled networks
+		foreach ($networks as $network) {
+			$net = array_search('disable-'.$network, $options);
+			if (!$net) $activeNetworks[] = $network;
+		}
 
 		$shares = $this->get_post_transient($this->transient_name);
 
 		if(!is_array($shares)) {
 			
-			foreach($networks as $network) {
+			foreach($activeNetworks as $network) {
 				$shares[$network] = $this->{get_shares_.$network}($this->post_id);	
 			}
 			$this->set_post_transient($shares, $this->post_id);
 		}
-	
 		return $shares;
 
 	}
