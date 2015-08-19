@@ -170,7 +170,6 @@
 						</div>
 					</div>
 				<?php } ?>
-				<?php var_dump($social); ?>
 			</div>
 			<?php if(!isset($options["disable-share"])) { ?>
 			<ul class="sb_share">
