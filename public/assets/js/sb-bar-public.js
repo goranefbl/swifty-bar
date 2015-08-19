@@ -160,7 +160,11 @@
                 return false;
             }
         });
-
+        $('.sb_share>li>a').hover(function() {
+            $('i', this).hide();
+        }, function() {
+            $('i', this).show();
+        })
 	});
 
 })( jQuery );
