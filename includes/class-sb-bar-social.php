@@ -76,7 +76,7 @@ class sb_bar_Social {
 		if(!is_array($shares)) {
 			
 			foreach($activeNetworks as $network) {
-				$shares[$network] = $this->{get_shares_.$network}($this->post_id);	
+				$shares[$network] = $this->{'get_shares_'.$network}($this->post_id);	
 			}
 			$this->set_post_transient($shares, $this->post_id);
 		}
