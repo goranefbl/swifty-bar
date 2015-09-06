@@ -1,4 +1,5 @@
 <?php
+	wp_reset_query();
 	global $post;
 	$options = (get_option('sb_bar_options') ? get_option('sb_bar_options') : false);
 
@@ -96,9 +97,9 @@
 
 			<div class="sb_post-data">
 				<h2>
-					<?php if(!isset($options["custom-title"]) || $options["custom-title"] == '') { 
-							echo get_the_title(); 
-						} else { 
+					<?php if(!isset($options["custom-title"]) || $options["custom-title"] == '') {
+							echo get_the_title();
+						} else {
 							$title = substr(get_the_title(),0,$options["custom-title"]);
 							echo $title;
 							if (strlen($title) >($options["custom-title"] - 2)){
