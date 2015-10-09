@@ -263,6 +263,13 @@ body.single {
   display: inline-block;
   padding-left: 10px;
 }
+.sb_share li.sbfacebook.hidetext a {
+	padding: 0;
+	width: 34px;
+}
+.sb_share li.sbfacebook.hidetext a span {
+  display: none;
+}
 .sb_share li a.sbsoc-tw{
   background-color: #00c3f3;
 }
