@@ -178,7 +178,7 @@
 			<?php if(!isset($options["disable-share"])) { ?>
 			<ul class="sb_share">
 				<?php if(!isset($options["disable-facebook"])) { ?>
-			    <li class="sbfacebook"><a href="#" title="Share on Facebook" class="sbsoc-fb" target="_blank"><i class="sbicn-facebook"></i><span>Share on Facebook</span></a></li>
+			    <li class="sbfacebook"><a href="#" title="Share on Facebook" class="sbsoc-fb<?php if(isset($options["smaller-facebook"])) { ?> hidetext<?php } ?>" target="_blank"><i class="sbicn-facebook"></i><span>Share on Facebook</span></a></li>
 			    <?php } if(!isset($options["disable-twitter"])) { ?>
 			    <li class="sbtwitter"><a href="#" data-title="<?php the_title(); ?>" title="Share on Twitter" class="sbsoc-tw" target="_blank" ><i class="sbicn-twitter"></i><span>Share on Twitter</span></a></li>
 			    <?php } if(!isset($options["disable-googleplus"])) { ?>
