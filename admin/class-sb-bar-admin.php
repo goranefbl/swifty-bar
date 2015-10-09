@@ -229,6 +229,13 @@ class sb_bar_Admin {
 			$this->sb_bar . '-enable-options'
 		);
 		add_settings_field(
+			'smaller-facebook',
+			apply_filters( $this->sb_bar . '-smaller-facebook', __( 'Hide "Share on Facebook" Button text', $this->sb_bar ) ),
+			array( $this, 'smaller_facebook' ),
+			$this->sb_bar . '-enable',
+			$this->sb_bar . '-enable-options'
+		);
+		add_settings_field(
 			'disable-facebook',
 			apply_filters( $this->sb_bar . '-disable-facebook', __( 'Disable Facebook Button (Why would you do that?)', $this->sb_bar ) ),
 			array( $this, 'disable_facebook' ),
@@ -304,7 +311,7 @@ class sb_bar_Admin {
 	} // disable_bar_options_field()
 
 	/**
-	 * Enable Bar Field
+	 * Post Type Selection Field
 	 *
 	 * @since 		1.0.0
 	 * @return 		mixed 			The settings field
@@ -334,7 +341,7 @@ class sb_bar_Admin {
 			<?php }
 				
 		}  ?>
-			<p class="description">IMPORTANT: Bar will not show up untill one of these is checked.</p>
+			<p class="description">IMPORTANT: Bar will not show up until one of these is checked.</p>
 	<?php 
 	} // post_type()
 
@@ -658,6 +665,26 @@ class sb_bar_Admin {
 
 		<?php
 	} // disable_twitter()
+
+	/**
+	 * Smaller Facebook
+	 *
+	 * @since 		1.1.2
+	 * @return 		mixed 			The settings field
+	 */
+	public function smaller_facebook() {
+
+		$options 	= get_option( $this->sb_bar . '_options' );
+		$option 	= 0;
+
+		if ( ! empty( $options['smaller-facebook'] ) ) {
+			$option = $options['smaller-facebook'];
+		}
+
+		?><input type="checkbox" id="<?php echo $this->sb_bar; ?>_options[smaller-facebook]" name="<?php echo $this->sb_bar; ?>_options[smaller-facebook]" value="1" <?php checked( $option, 1 , true ); ?> />
+
+		<?php
+	} // smaller_facebook()
 
 	/**
 	 * Disable Facebook
