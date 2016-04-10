@@ -3,7 +3,7 @@ Contributors: goran87
 Tags: share buttons,sticky bar, footer bar, previous next posts, time to read, progress bar, simple share, share icons, sticky share,author,social,twitter,facebook
 Requires at least: 3.0
 Tested up to: 4.3
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,6 +47,9 @@ We will add them slowly in new updates. Post on forums which one you need and we
 2. screenshot-2.png
 
 == Changelog ==
+
+= 1.1.2 =
+* Added option to show/hide the "Share on Facebook" text
 
 = 1.1.1 =
 * sbicon- class changed to sbicn to remove conflict with icomoon font

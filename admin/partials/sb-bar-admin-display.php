@@ -26,7 +26,7 @@ flush_rewrite_rules();
 						<h3 class="hndle"><span>Super Fast Footer Sticky Bar</span></h3>
 						<div class="inside">
 							<p>Thanks for installing Swifty Bar!</p>
-							<p>This plugin is lightweight and can easly replace mulitple of your plugins, such as social share, next/prev posts and time to read. 
+							<p>This plugin is lightweight and can easly replace multiple plugins, such as social share, next/prev posts and time to read. 
 							<br/>Its coded with best practice, it is super fast and you can expect regular updates with new options, so check back here often.</p>
 						</div>
 					</div>
